@@ -4,7 +4,7 @@ export default class HolbertonCourse {
     this._length = length;
     this._students = Array.isArray(students) ? students : [];
   }
-  
+
   // Getter for name attribute
   get name() {
     return this._name;
