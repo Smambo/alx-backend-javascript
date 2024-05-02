@@ -9,7 +9,7 @@ const readDatabase = (dataPath) => new Promise((resolve, reject) => {
     fs.readFile(dataPath, (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
-	  }
+      }
       if (data) {
         const fileLines = data
           .toString('utf-8')
