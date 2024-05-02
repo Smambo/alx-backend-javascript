@@ -24,7 +24,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
         const studentPropNames = dbFieldNames.slice(
           0,
           dbFieldNames.length - 1,
-		);
+        );
 
         for (const line of fileLines.slice(1)) {
           const studentRecord = line.split(',');
@@ -35,11 +35,11 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           const field = studentRecord[studentRecord.length - 1];
           if (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
-		  }
+          }
           const studentEntries = studentPropNames.map((propName, idx) => [
             propName,
             studentPropValues[idx],
-		  ]);
+          ]);
           studentGroups[field].push(Object.fromEntries(studentEntries));
         }
         const totalStudents = Object.values(studentGroups).reduce(
@@ -51,11 +51,11 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
             `Number of students in ${field}: ${group.length}.`,
             'List:',
             group.map((student) => student.firstname).join(', '),
-		  ].join(' '));
+          ].join(' '));
         }
         resolve(reportParts.join('\n'));
       }
-	});
+    });
   }
 });
 
@@ -84,7 +84,7 @@ const SERVER_ROUTE_HANDLERS = [
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
           res.write(Buffer.from(responseText));
-		})
+        })
         .catch((err) => {
           responseParts.push(err instanceof Error ? err.message : err.toString());
           const responseText = responseParts.join('\n');
@@ -92,7 +92,7 @@ const SERVER_ROUTE_HANDLERS = [
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
           res.write(Buffer.from(responseText));
-		});
+        });
     },
   },
 ];
@@ -102,7 +102,7 @@ app.on('request', (req, res) => {
     if (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
       break;
-	}
+    }
   }
 });
 
